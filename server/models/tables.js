@@ -9,16 +9,26 @@ const userTable = `
 		);
 	`;
 
+const createMockDataUser = `
+	INSERT INTO users (username, password, email)
+ 	VALUES ('admin', 'password', 'admin@gmail.com');
+	`;
+
 const linkTable = `
 	CREATE TABLE links (
 		id int NOT NULL GENERATED ALWAYS AS IDENTITY,
 		link varchar(255) NOT NULL,
 		label varchar(255) NOT NULL,
-		user_id varchar(255),
-		folder int NOT NULL,
+		username varchar(255),
+		folder int,
     timestamp TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
 		PRIMARY KEY (id)
 		);
+	`;
+
+const createMockDataLinks = `
+	INSERT INTO links (link, label)
+ 	VALUES ('www.google.com', 'google');
 	`;
 
 
@@ -28,15 +38,19 @@ const folderTable = `
     label varchar(255) NOT NULL,
 		url varchar(255) NOT NULL,
     parent int,
-    user_id varchar(255),
+    username varchar(255),
     timestamp TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     PRIMARY KEY (id)
     );
   `
 
+const createMockDataFolder = `
+	INSERT INTO folders (label, url)
+ 	VALUES ('coolstuff', 'linkpack.io/xy29o');
+	`;
+
+
   const setupTables = (tables) => {
-
-
     tables.forEach(table => {
       db.query(table)
       .then(data => {
@@ -48,32 +62,48 @@ const folderTable = `
         console.log(err)
       });
     });
-    
   }
 
-setupTables([userTable, linkTable, folderTable]);
+/* USE THIS TO CREATE INITIAL TABLES */
+// setupTables([userTable, linkTable, folderTable]);
 
-const testInsertUserQuery = `
-	INSERT INTO users (username, password, email)
- 	VALUES ('admin', 'password', 'admin@gmail.com');
-	`;
+const creatMockData = (mockData) => {
+  mockData.forEach(d => {
+    db.query(d)
+    .then(data => {
+      console.log(`table: ${JSON.stringify(d)} mock-data complete`);
+      console.log(data)
+    })
+    .catch(err => {
+      console.log('errr adding mock data to table');
+      console.log(err)
+    });
+  });
+}
 
+
+/* USE THIS TO CREATE MOCK DATA */
+// creatMockData([createMockDataUser, createMockDataLinks, createMockDataFolder]);
+
+
+const eraseTables = (tablename) => {
+  const dropQuery = `DROP TABLE ${tablename}`;
+  db.query(dropQuery)
+    .then(data => {
+      console.log(`sucessfully deleted: ${tablename}`);
+      console.log(data)
+    })
+    .catch(err => {
+      console.log('errr deleting table' + tablename);
+      console.log(err)
+    });
+}
+
+/* USE THESE TO ERASE TABLES */
+// eraseTables('folders');
+// eraseTables('links');
 
 const selectQuery= `
 	SELECT * FROM users;
 	`;
 
-/*
-db.query(testInsertUserQuery)
-	.then(data => console.log(data))
-	.catch(err => console.log(err))
-
-// db.query(selectQuery)
-// 	.then(data => console.log(data))
-// 	.catch(err => console.log(err))
-
-db
-  .query('SELECT * FROM users')
-  .then((res) => console.log('user:', res.rows[0]))
-
-  */
