@@ -17,10 +17,6 @@ const linkPackReducer = (state = initialState, action) => {
       return {
         ...state
       }
-    case types.UPDATE_CURRENT_ENTRY:
-      return {
-        ...state
-      }
     default: {
       return state;
     }
