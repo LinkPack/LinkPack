@@ -9,7 +9,7 @@ function App() {
 
   return(
     <Routes>
-      <Route path="*" element={<div>Anything</div>} />
+      <Route path="*" element={<DisplayContainer />} />
       <Route exact path="/l" element={<DisplayContainer />} />
       <Route exact path="/" element={<MainContainer navigate={navigate}/>} />
     </Routes>
