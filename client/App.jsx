@@ -5,9 +5,8 @@ function App() {
 
 
   return(
-    <div>
-      <MainContainer/>
-    </div>
+  
+   <MainContainer/>
   ); 
 }
 

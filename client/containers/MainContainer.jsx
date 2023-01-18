@@ -10,12 +10,12 @@ function MainContainer(props) {
   }
 
   return(
-    <div>
+    <main>
       <h1>LINKPACK</h1>
       <EntriesContainer onClick={handleClick} entries={props.linkPack.entries}/>
       <GeneratorContainer entries={props.linkPack.entries}/> 
 
-    </div>
+    </main>
   ); 
 };
 

@@ -10,10 +10,48 @@ body {
   font-family: 'Montserrat', sans-serif;
   font-weight: 100;
 }
+h1 {
+  font-size: 30px;
+}
+
+h3 {
+  font-size: 17px;
+  font-weight: 600;
+}
+
+p {
+  font-size: 14px;
+}
+
+.entry-box {
+  display: flex;
+  justify-content: space-between;
+  font-size: 16px;
+  padding: 0px 40px;
+}
+
+.link-bubble {
+  background-color: #E5E5E5;
+  border-radius: 10px;
+  padding: 5px;
+}
+
+.link {
+  width: 800px;
+}
+
+.label {
+  width: 200px;
+}
+
+.output-container {
+  width: 500px;
+  margin: auto;
+}
 
 #gen-box {
   border: 1px black;
-  background: blue;
+ 
   margin: 20px;
 }
 
@@ -21,5 +59,8 @@ body {
 
   background: #A5CBC6;
   margin: 10px;
+  padding: 10px;
+  border-radius: 10px;
+
   
 }

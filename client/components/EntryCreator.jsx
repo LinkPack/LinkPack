@@ -13,8 +13,7 @@ function EntryCreator(props) {
 
     const keyId = short.generate();
     console.log('i gen key', keyId);
-
-    props.onClick(label,link,keyId);
+    if(link !== '') props.onClick(label,link,keyId);
 
     resetLabel();
     resetLink();
@@ -23,9 +22,6 @@ function EntryCreator(props) {
   
   return(
     <div>
-      
-      <p>LinkPack will package all entered links and give you a short link to send to all your friends.</p>
-      <h3>Enter your links here</h3>
       <TextField id="outlined-basic" label="Label" variant="outlined" value={label} onChange={labelOnChange} />
       <TextField id="outlined-basic" label="Link" variant="outlined" value={link} onChange={linkOnChange} />
       <button onClick={handleButtonClick}>Add Link </button>
