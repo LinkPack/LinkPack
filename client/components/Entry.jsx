@@ -10,9 +10,9 @@ console.log('im props in entry', props)
     
   }
   return(
-    <div class='entry-box'>
-      <div class='label link-bubble'>{props.label}</div>
-      <div class='link link-bubble'>{props.link}</div>
+    <div className='entry-box'>
+      <div className='label link-bubble'>{props.label}</div>
+      <div className='link link-bubble'>{props.link}</div>
       <button onClick={deleteEntry}>-</button>
     </div>
   ); 

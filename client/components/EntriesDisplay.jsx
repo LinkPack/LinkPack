@@ -12,7 +12,7 @@ function EntriesDisplay(props) {
 
 
   return(
-    <div class='display-box'>
+    <div className='display-box'>
       {allEntries}
     </div>
   ); 

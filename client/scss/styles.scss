@@ -73,7 +73,8 @@ p {
 }
 
 #generatedLink {
-  margin-top: 20px;
+  margin-top: 30px;
+  font-size: 35px;
 }
 #generatedLink:hover {
   font-weight: 200;
@@ -89,4 +90,17 @@ button {
 
 button:hover {
   background-color: #cfe9e6;
+}
+
+.copiedBanner {
+  font-size: 14px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  background-color: #A5CBC6;
+  padding: 5px 0;
+  opacity: 1;
+  display: none;
+  transition: opacity 0.3s linear;
 }

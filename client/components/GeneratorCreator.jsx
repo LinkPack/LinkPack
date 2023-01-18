@@ -28,12 +28,28 @@ function GeneratorCreator(props) {
   function copyToClipboard() {
     // Copy the text inside the text field
     navigator.clipboard.writeText(text);
+    const copiedBanner = document.querySelector('.copiedBanner');
+    copiedBanner.style.display = 'block';
+    copiedBanner.style.opacity = '1';
+    setTimeout(hide, 500)
+  }
+
+  function hide() {
+    const copiedBanner = document.querySelector('.copiedBanner');
+    copiedBanner.style.opacity = '0';
+    setTimeout(reshow, 500)
+  }
+  function reshow() {
+    const copiedBanner = document.querySelector('.copiedBanner');
+    copiedBanner.style.display = 'none';
+    copiedBanner.style.opacity = '1';
   }
   
   return(
-    <div class='output-container'>
-        <div><button onClick={fetchLink}>Generate</button></div>
-        <div onClick={copyToClipboard} id='generatedLink'>{text}</div>
+    <div className='output-container'>
+      <div className='copiedBanner'>copied to clipboard</div>
+      <button onClick={fetchLink}>Generate</button>
+      <div onClick={copyToClipboard} id='generatedLink'>{text}</div>
     </div>
   ); 
 }
