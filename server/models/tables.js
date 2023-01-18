@@ -20,6 +20,7 @@ const linkTable = `
 		link varchar(255) NOT NULL,
 		label varchar(255) NOT NULL,
 		folder int NOT NULL,
+		key varchar(255) NOT NULL,
     timestamp TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
 		PRIMARY KEY (id)
 		);

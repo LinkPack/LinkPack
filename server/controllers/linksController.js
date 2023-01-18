@@ -91,20 +91,21 @@ linksController.addLinks = async (req, res, next) => {
 
   try {
 
-    let query = `INSERT INTO links (link, label, folder)
+    let query = `INSERT INTO links (link, label, folder, key)
       VALUES`;
     let params = [];
 
     for (let i = 0; i < links.length; i++) {
-      let num = i * 3;
+      let num = i * 4;
       // add to query
-      query += `( $${num + 1}, $${num + 2}, $${num + 3} )`;
+      query += `( $${num + 1}, $${num + 2}, $${num + 3}, $${num + 4} )`;
       if (i < links.length -1) query += `,`
 
       // push values
       params.push(links[i].link);
       params.push(links[i].label);
       params.push(res.locals.folderId);
+      params.push(links[i].keyId);
     }
     query += `;`;
 
