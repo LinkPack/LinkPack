@@ -42,7 +42,7 @@ app.post('/genlink', linksController.makeFolder, linksController.addLinks, (req,
       // add links
 
   console.log('/genlink');
-  return res.status(200).json({link: 'linkpack.io/' + res.locals.url});
+  return res.status(200).json({link: res.locals.url});
 });
 
 
