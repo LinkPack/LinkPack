@@ -7,9 +7,6 @@ const linksController = {}
 
 
 linksController.makeFolder = async (req, res, next) => {
-  // should I check if folder exists???
-
-
   // we manually set this to 32, but in order to scale we may want to increase this, or have it scale based on number of links in DB.
   const uidgen = new UIDGenerator(32);
 
@@ -17,7 +14,7 @@ linksController.makeFolder = async (req, res, next) => {
     // generate UID
     let uid = await uidgen.generate();
 
-    // check if folder exists. If it does... keep making uids
+    // check if folder exists. If it does... keep making uids and checking, up to 10 tries
     try {
       let dupID = true;
       let maxTries = 10;
@@ -64,7 +61,6 @@ linksController.makeFolder = async (req, res, next) => {
 
     res.locals.folderId = results.rows[0].id;
     res.locals.url = uid;
-    res.locals.username = username; // if this is defined, pass it along
 
     // what we are passing along
     console.log('locals', res.locals);
@@ -94,22 +90,20 @@ linksController.addLinks = async (req, res, next) => {
   console.log('links',links);
 
   try {
-    const username = req.body.username ? req.body.username : null;
 
-    let query = `INSERT INTO links (link, label, username, folder)
+    let query = `INSERT INTO links (link, label, folder)
       VALUES`;
     let params = [];
 
     for (let i = 0; i < links.length; i++) {
-      let num = i * 4;
+      let num = i * 3;
       // add to query
-      query += `( $${num + 1}, $${num + 2}, $${num + 3}, $${num + 4} )`;
+      query += `( $${num + 1}, $${num + 2}, $${num + 3} )`;
       if (i < links.length -1) query += `,`
 
       // push values
       params.push(links[i].link);
       params.push(links[i].label);
-      params.push(username);
       params.push(res.locals.folderId);
     }
     query += `;`;
@@ -124,7 +118,7 @@ linksController.addLinks = async (req, res, next) => {
   }
   catch (error) {
     return next({
-      log: 'error in linksController.makeFolder',
+      log: 'error in linksController.addLinks',
       status: 400,
       message: {err: error}
     })
@@ -135,7 +129,6 @@ linksController.addLinks = async (req, res, next) => {
   // add folderID from res.locals
   // add username if one is savd in res.locals
 
-  return next;
 }
 
 

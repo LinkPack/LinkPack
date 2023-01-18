@@ -19,7 +19,6 @@ const linkTable = `
 		id int NOT NULL GENERATED ALWAYS AS IDENTITY,
 		link varchar(255) NOT NULL,
 		label varchar(255) NOT NULL,
-		username varchar(255),
 		folder int NOT NULL,
     timestamp TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
 		PRIMARY KEY (id)
@@ -49,8 +48,7 @@ const createMockDataFolder = `
  	VALUES ('coolstuff', 'xy29o');
 	`;
 
-
-  const setupTables = (tables) => {
+ const setupTables = (tables) => {
     tables.forEach(table => {
       db.query(table)
       .then(data => {
@@ -66,7 +64,7 @@ const createMockDataFolder = `
 
 /* USE THIS TO CREATE INITIAL TABLES */
 // setupTables([userTable, linkTable, folderTable]);
-// setupTables([linkTable, folderTable]);
+// setupTales([linkTable, folderTable]);
 
 const creatMockData = (mockData) => {
   mockData.forEach(d => {
@@ -104,8 +102,11 @@ const eraseTables = (tablename) => {
 /* USE THESE TO ERASE TABLES */
 // eraseTables('folders');
 // eraseTables('links');
+// eraseTables('users');
 
 const selectQuery= `
 	SELECT * FROM users;
 	`;
 
+// RUN:
+// node ./server/models/tables.js    
