@@ -12,15 +12,15 @@ function GeneratorCreator(props) {
   const fetchLink = () => {
     console.log(text);
     console.log('im in generatorcreator and i found entires', props.entries);
-    // fetch('/genLink', {
-    //   method: POST,
-    //   headers: {
-    //     'Content-Type': 'application/json'
-    //   },
-    //   body: JSON.stringify(props.entries) // hope this works
-    // })
-    // .then(response => response.json())
-    // .then(link => console.log(link));
+    fetch('/genlink', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ links: props.entries}) // hope this works
+    })
+    .then(response => response.json())
+    .then(key => console.log(key.link));
   }
   
   return(

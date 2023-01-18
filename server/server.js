@@ -42,18 +42,14 @@ app.post('/genlink', linksController.makeFolder, linksController.addLinks, (req,
       // add links
 
   console.log('/genlink');
-  return res.status(200).json({link: 'linkpack.io/' + res.locals.url});
+  return res.status(200).json({link: res.locals.url});
 });
 
 
 // generate an aggregate link
-app.get('/:id', linksController.getList, (req, res)=>{
-  // send an id to look up in DB
-  // ID will match with a folder
-  // jointable getting all contents (links + folders) with that folder ID
-  // generate an object with lables+links
-  console.log('/genlink');
-  return res.status(200).json({link: res.locals.link}).send(path.resolve(__dirname, '../index.html'));
+app.get('/:id', linksController.getList, (req, res) => {
+  console.log(res.locals.fetchedLinks);
+  return res.status(200).json(res.locals.fetchedLinks);
 });
 
 // app.post('/signup', userController.createUser, sessionController.setSSIDCookie, sessionController.startSession, userController.checkServed, (req, res)=>{

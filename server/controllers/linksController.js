@@ -9,7 +9,7 @@ const linksController = {}
 linksController.makeFolder = async (req, res, next) => {
   // we manually set this to 32, but in order to scale we may want to increase this, or have it scale based on number of links in DB.
   const uidgen = new UIDGenerator(32);
-
+  console.log('im req.body', req.body);
   try {
     // generate UID
     let uid = await uidgen.generate();
@@ -86,25 +86,26 @@ linksController.makeFolder = async (req, res, next) => {
 }
 
 linksController.addLinks = async (req, res, next) => {
-  const links = req.body;
+  const links = req.body.links;
   console.log('links',links);
 
   try {
 
-    let query = `INSERT INTO links (link, label, folder)
+    let query = `INSERT INTO links (link, label, folder, key)
       VALUES`;
     let params = [];
 
     for (let i = 0; i < links.length; i++) {
-      let num = i * 3;
+      let num = i * 4;
       // add to query
-      query += `( $${num + 1}, $${num + 2}, $${num + 3} )`;
+      query += `( $${num + 1}, $${num + 2}, $${num + 3}, $${num + 4} )`;
       if (i < links.length -1) query += `,`
 
       // push values
       params.push(links[i].link);
       params.push(links[i].label);
       params.push(res.locals.folderId);
+      params.push(links[i].keyId);
     }
     query += `;`;
 
@@ -133,6 +134,40 @@ linksController.addLinks = async (req, res, next) => {
 
 
 linksController.getList = async (req, res, next) => {
+  try {
+    // console.log('req.params.id', req.params.id);
+    // step 1: using the tiny url, find the associated folder number
+    
+    const findFolderQuery = `
+      SELECT id
+      FROM folders
+      WHERE url = '${req.params.id}';
+    `
+    const folderData = await db.query(findFolderQuery);
+    const folderNumber = folderData.rows[0].id;
+    // step 2: using the folder number, return all links associate with the folder number
+    const fetchLinksQuery = `
+      SELECT label, link
+      FROM links
+      WHERE folder = ${folderNumber}
+    `
+    const linksData = await db.query(fetchLinksQuery);
+    const linksAndLabels = {};
+    const fetchedLinksObj = linksData.rows.forEach((obj) => {
+      linksAndLabels[obj['label']] = obj['link'];
+    });
+
+    // save fetched links to res.local to send to client
+    res.locals.fetchedLinks = linksAndLabels;
+    return next()
+  } catch (err) {
+    return next({
+      log: 'linksController.getList failure',
+      status: 400,
+      message: {err:`linksController.getList fail ${err}`}
+    });
+  }
+  
   // ID = the 
   // send an id to look up in DB
   // ID will match with a folder

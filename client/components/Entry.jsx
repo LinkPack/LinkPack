@@ -1,6 +1,6 @@
 import React from 'react';
 
-function Entry({id, link, label}) {
+function Entry({link, label}) {
 
   return(
     <div>
