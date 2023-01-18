@@ -65,7 +65,7 @@ const createMockDataFolder = `
 
 /* USE THIS TO CREATE INITIAL TABLES */
 // setupTables([userTable, linkTable, folderTable]);
-// setupTales([linkTable, folderTable]);
+// setupTables([linkTable, folderTable]);
 
 const creatMockData = (mockData) => {
   mockData.forEach(d => {
