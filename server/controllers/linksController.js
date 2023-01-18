@@ -9,7 +9,7 @@ const linksController = {}
 linksController.makeFolder = async (req, res, next) => {
   // we manually set this to 32, but in order to scale we may want to increase this, or have it scale based on number of links in DB.
   const uidgen = new UIDGenerator(32);
-
+  console.log('im req.body', req.body);
   try {
     // generate UID
     let uid = await uidgen.generate();

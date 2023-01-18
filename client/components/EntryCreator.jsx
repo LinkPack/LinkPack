@@ -2,27 +2,19 @@ import React from 'react';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import { useInput } from '../hooks.js';
-import {connect} from 'react-redux';
-import { addEntryActionCreator } from '../actions/actions.js'
+import short from 'short-uuid';
 
 function EntryCreator(props) {
   const [label, labelOnChange, resetLabel] = useInput('');
   const [link, linkOnChange, resetLink] = useInput('');
 
-  const handleButtonClick = () => {
-    //console.log(label, link);
+  const handleButtonClick = async () => {
 
-    // dispatch add entry
-    // fetch('/sendLink', {
-    //   method: POST,
-    //   headers: {
-    //     'Content-Type': 'application/json'
-    //   },
-    //   body: JSON.stringify({label, link}) // hope this works
-    // })
-    // .then(response => response.json())
-    // .then(id => props.newEntry(label, link, id));
-    props.onClick(label,link,1);
+
+    const key = short.generate();
+    console.log('i gen key', key);
+
+    props.onClick(label,link,key);
 
     resetLabel();
     resetLink();
