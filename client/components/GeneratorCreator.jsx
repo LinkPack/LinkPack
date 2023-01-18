@@ -10,7 +10,8 @@ function GeneratorCreator(props) {
   
   const [text, textOnChange, resetText] = useInput('');
   const fetchLink = () => {
-    console.log(text);
+    if (text) return;
+    
     console.log('im in generatorcreator and i found entires', props.entries);
     fetch('/genlink', {
       method: 'POST',
