@@ -1,10 +1,12 @@
 import React from 'react';
 
-function Entry() {
+function Entry({id, link, label}) {
 
   return(
     <div>
-      Entry
+      <div>{label}</div>
+      <div>{link}</div>
+      <button>-</button>
     </div>
   ); 
 }

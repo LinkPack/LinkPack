@@ -1,8 +1,12 @@
 import * as types from '../constants/actionTypes';
 
-export const addEntryActionCreator = entry => ({
+export const addEntryActionCreator = (label, link, id) => ({
   type: types.ADD_ENTRY,
-  payload: entry
+  payload: {
+    label,
+    link,
+    id
+  }
 });
 
 export const generateLinkPackActionCreator = () => ({

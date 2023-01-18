@@ -1,13 +1,20 @@
 import React from 'react';
+import EntryCreator from '../components/EntryCreator.jsx'
+import EntriesDisplay from '../components/EntriesDisplay.jsx';
 
-function EntriesContainer() {
+
+function EntriesContainer(props) {
 
   return(
     <div>
         EntriesContainer
+        <EntryCreator onClick={props.onClick} entries={props.entries} />
+        <EntriesDisplay entries={props.entries}/>
     </div>
   ); 
 }
 
 
-export default EntriesContainer;
+
+
+export default (EntriesContainer);
