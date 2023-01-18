@@ -86,7 +86,7 @@ linksController.makeFolder = async (req, res, next) => {
 }
 
 linksController.addLinks = async (req, res, next) => {
-  const links = req.body;
+  const links = req.body.links;
   console.log('links',links);
 
   try {
