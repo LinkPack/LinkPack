@@ -20,15 +20,15 @@ const linkTable = `
 		link varchar(255) NOT NULL,
 		label varchar(255) NOT NULL,
 		username varchar(255),
-		folder int,
+		folder int NOT NULL,
     timestamp TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
 		PRIMARY KEY (id)
 		);
 	`;
 
 const createMockDataLinks = `
-	INSERT INTO links (link, label)
- 	VALUES ('www.google.com', 'google');
+	INSERT INTO links (link, label, folder)
+ 	VALUES ('www.google.com', 'google', 1);
 	`;
 
 
@@ -46,7 +46,7 @@ const folderTable = `
 
 const createMockDataFolder = `
 	INSERT INTO folders (label, url)
- 	VALUES ('coolstuff', 'linkpack.io/xy29o');
+ 	VALUES ('coolstuff', 'xy29o');
 	`;
 
 
@@ -66,6 +66,7 @@ const createMockDataFolder = `
 
 /* USE THIS TO CREATE INITIAL TABLES */
 // setupTables([userTable, linkTable, folderTable]);
+// setupTables([linkTable, folderTable]);
 
 const creatMockData = (mockData) => {
   mockData.forEach(d => {
@@ -84,6 +85,7 @@ const creatMockData = (mockData) => {
 
 /* USE THIS TO CREATE MOCK DATA */
 // creatMockData([createMockDataUser, createMockDataLinks, createMockDataFolder]);
+// creatMockData([createMockDataLinks, createMockDataFolder]);
 
 
 const eraseTables = (tablename) => {

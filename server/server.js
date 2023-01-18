@@ -42,7 +42,7 @@ app.post('/genlink', linksController.makeFolder, linksController.addLinks, (req,
       // add links
 
   console.log('/genlink');
-  return res.status(200).json({link: res.locals.link});
+  return res.status(200).json({link: 'linkpack.io/' + res.locals.url});
 });
 
 
@@ -56,10 +56,10 @@ app.get('/:id', linksController.getList, (req, res)=>{
   return res.status(200).json({link: res.locals.link});
 });
 
-app.post('/signup', userController.createUser, sessionController.setSSIDCookie, sessionController.startSession, userController.checkServed, (req, res)=>{
-  console.log('successfully created user: ', req.body.username, ' user served:', res.locals.served );
-  return res.status(200).json({message: 'signup success', served: res.locals.served, userID: res.locals.userID});
-})
+// app.post('/signup', userController.createUser, sessionController.setSSIDCookie, sessionController.startSession, userController.checkServed, (req, res)=>{
+//   console.log('successfully created user: ', req.body.username, ' user served:', res.locals.served );
+//   return res.status(200).json({message: 'signup success', served: res.locals.served, userID: res.locals.userID});
+// })
 
 
 
