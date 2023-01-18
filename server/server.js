@@ -47,7 +47,7 @@ app.post('/genlink', linksController.makeFolder, linksController.addLinks, (req,
 
 
 // generate an aggregate link
-app.get('/:id', linksController.getList, (req, res) => {
+app.get('/getList/:id', linksController.getList, (req, res) => {
   console.log(res.locals.fetchedLinks);
   return res.status(200).json(res.locals.fetchedLinks);
 });
@@ -57,8 +57,10 @@ app.get('/:id', linksController.getList, (req, res) => {
 //   return res.status(200).json({message: 'signup success', served: res.locals.served, userID: res.locals.userID});
 // })
 
-
-
+app.get('/*', (req, res) => {
+  console.log('in catch all')
+  return res.sendFile(path.resolve(__dirname, '../dist/index.html'));
+})
 
 // catch-all route handler for any requests to an unknown route
 app.use((req, res) => res.status(404).send('404 error. Page not found'));
