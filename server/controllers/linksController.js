@@ -134,26 +134,30 @@ linksController.addLinks = async (req, res, next) => {
 
 linksController.getList = async (req, res, next) => {
   try {
-
+    // console.log('req.params.id', req.params.id);
     // step 1: using the tiny url, find the associated folder number
+    
     const findFolderQuery = `
-      SELECT folder
-      FROM folderTable
-      WHERE url = ${req.body.link};
+      SELECT id
+      FROM folders
+      WHERE url = '${req.params.id}';
     `
-    const folderNumber = await db.query(findFolderQuery);
-
+    const folderData = await db.query(findFolderQuery);
+    const folderNumber = folderData.rows[0].id;
     // step 2: using the folder number, return all links associate with the folder number
     const fetchLinksQuery = `
-      SELECT link
-      FROM linkTable
+      SELECT label, link
+      FROM links
       WHERE folder = ${folderNumber}
     `
-    const fetchedLinks = await db.query(fetchLinksQuery);
+    const linksData = await db.query(fetchLinksQuery);
+    const linksAndLabels = {};
+    const fetchedLinksObj = linksData.rows.forEach((obj) => {
+      linksAndLabels[obj['label']] = obj['link'];
+    });
 
     // save fetched links to res.local to send to client
-    res.locals.fetchedLinks = fetchedLinks;
-
+    res.locals.fetchedLinks = linksAndLabels;
     return next()
   } catch (err) {
     return next({
