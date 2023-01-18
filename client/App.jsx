@@ -1,6 +1,5 @@
 import React from 'react';
-// import MainContainer from './containers/MainContainer.jsx';
-
+import MainContainer from './containers/MainContainer.jsx';
 
 function App() {
 
@@ -8,7 +7,7 @@ function App() {
   return(
     <div>
       TEST
-      {/* <MainContainer/> */}
+      <MainContainer/>
     </div>
   ); 
 }
