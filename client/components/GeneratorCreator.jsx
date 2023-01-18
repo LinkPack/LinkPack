@@ -20,13 +20,20 @@ function GeneratorCreator(props) {
       body: JSON.stringify({ links: props.entries}) // hope this works
     })
     .then(response => response.json())
-    .then(key => console.log(key.link));
+    .then(key => {
+      resetText(`${window.location.origin}/${key.link}`);
+      console.log(key.link)});
+  }
+
+  function copyToClipboard() {
+    // Copy the text inside the text field
+    navigator.clipboard.writeText(text);
   }
   
   return(
-    <div>
-        <TextField id="outlined-basic" label="LinkPack" variant="outlined" onChange={textOnChange}  value={text}/>
-        <button onClick={fetchLink}>Generate</button>
+    <div class='output-container'>
+        <div><button onClick={fetchLink}>Generate</button></div>
+        <div onClick={copyToClipboard} id='generatedLink'>{text}</div>
     </div>
   ); 
 }

@@ -11,10 +11,9 @@ function EntryCreator(props) {
   const handleButtonClick = async () => {
 
 
-    const key = short.generate();
-    console.log('i gen key', key);
-
-    props.onClick(label,link,key);
+    const keyId = short.generate();
+    console.log('i gen key', keyId);
+    if(link !== '') props.onClick(label,link,keyId);
 
     resetLabel();
     resetLink();
@@ -23,7 +22,6 @@ function EntryCreator(props) {
   
   return(
     <div>
-      <p>Enter your links here</p>
       <TextField id="outlined-basic" label="Label" variant="outlined" value={label} onChange={labelOnChange} />
       <TextField id="outlined-basic" label="Link" variant="outlined" value={link} onChange={linkOnChange} />
       <button onClick={handleButtonClick}>Add Link </button>

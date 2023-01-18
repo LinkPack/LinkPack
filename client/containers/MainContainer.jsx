@@ -5,18 +5,17 @@ import {connect} from 'react-redux';
 import { addEntryActionCreator } from '../actions/actions.js'
 
 function MainContainer(props) {
-  const handleClick = (label, link, key) => {
-    props.newEntry(label,link, key);
+  const handleClick = (label, link, keyId) => {
+    props.newEntry(label,link, keyId);
   }
 
   return(
-    <div>
-      <button onClick={(() => props.navigate('/l'))}>Navigate</button>
-      MainContainer!
-     <EntriesContainer onClick={handleClick} entries={props.linkPack.entries}/>
-     <GeneratorContainer entries={props.linkPack.entries}/> 
+    <main>
+      <h1>LINKPACK</h1>
+      <EntriesContainer onClick={handleClick} entries={props.linkPack.entries}/>
+      <GeneratorContainer entries={props.linkPack.entries}/> 
 
-    </div>
+    </main>
   ); 
 };
 
@@ -25,7 +24,7 @@ const mapStateToProps = state => ({
 });
 const mapDispatchToProps = dispatch => (
   {
-    newEntry: (label, link, key) => dispatch(addEntryActionCreator(label, link, key))
+    newEntry: (label, link, keyId) => dispatch(addEntryActionCreator(label, link, keyId))
   
   }
 );

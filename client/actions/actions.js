@@ -1,11 +1,11 @@
 import * as types from '../constants/actionTypes';
 
-export const addEntryActionCreator = (label, link, key) => ({
+export const addEntryActionCreator = (label, link, keyId) => ({
   type: types.ADD_ENTRY,
   payload: {
     label,
     link,
-    key
+    keyId
   }
 });
 
@@ -19,3 +19,8 @@ export const getEntriesActionCreator = (receivedEntries) => ({
     receivedEntries
   }
 })
+export const deleteEntryActionCreator = (keyId) => ({
+  type: types.DELETE_ENTRY,
+  payload: keyId
+});
+

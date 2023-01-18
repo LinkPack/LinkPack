@@ -2,7 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;1,100;1,200;1,300;1,400&display=swap');
 
 body {
-  background: $pageBg;
+  background: $homePageBg;
   text-align: center;
   margin: 0;
   font-size: 4vw;
@@ -10,15 +10,83 @@ body {
   font-family: 'Montserrat', sans-serif;
   font-weight: 100;
 }
+h1 {
+  font-size: 30px;
+}
 
-#genBox {
+h3 {
+  font-size: 17px;
+  font-weight: 600;
+}
+
+p {
+  font-size: 14px;
+}
+
+.entry-box {
+  display: flex;
+  justify-content: space-between;
+  font-size: 16px;
+  padding: 0px 40px;
+}
+
+.link-bubble {
+  background-color: #E5E5E5;
+  border-radius: 10px;
+  padding: 5px;
+  margin:  3px 0px;
+}
+
+.link {
+  width: 800px;
+  margin-left: 20px;
+}
+
+.label {
+  width: 200px;
+}
+
+.output-container {
+  width: 500px;
+  margin: auto;
+}
+
+#gen-box {
   border: 1px black;
-  background: blue;
+ 
   margin: 20px;
 }
 
-.box {
-  border: 1px black;
-  background: rgb(82, 177, 181);
-  margin: 20px;
+.display-box {
+  background: #A5CBC6;
+  margin: 7px;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.display-box button {
+  margin-top: 4px;
+  background-color: #E5E5E5;
+  margin-left: 20px;
+  padding: 0 20px;
+  height: 27px;
+}
+
+#generatedLink {
+  margin-top: 20px;
+}
+#generatedLink:hover {
+  font-weight: 200;
+  cursor: pointer;
+}
+
+button {
+  border: none;
+  border-radius: 4px;
+  padding: 15px;
+  margin: 0 20px;
+}
+
+button:hover {
+  background-color: #cfe9e6;
 }
