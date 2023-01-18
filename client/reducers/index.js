@@ -1,9 +1,8 @@
 import { combineReducers } from 'redux';
-
-import boilerplateReducer from './boilerplateReducer';
+import linkPackReducer from './linkPackReducer';
 
 const reducers = combineReducers({
-  store: boilerplateReducer,
+  linkPack: linkPackReducer,
 });
 
 export default reducers;
