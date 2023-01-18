@@ -1,5 +1,6 @@
 const path = require('path');
 const express = require('express');
+const linksController = require('./controllers/linksController');
 
 const app = express();
 
@@ -17,6 +18,51 @@ app.use(express.static(path.resolve(__dirname, '../client')));
 
 // handle routes
 // app.use('/api', apiRouter);
+
+// generate an aggregate link
+app.post('/genlink', linksController.makeFolder, linksController.addLinks, (req, res)=>{
+
+  // recieve:
+    // object with two keys
+      // links : array of links
+      // labels : array of matching labels
+
+    // only do this if a username + folder name to end is provided: (i.e. a user is logged in)
+      // check if folder exists, if not, make folder
+    // else: just make a folder.
+
+    // save folder ID + folder url in res.locals
+
+    // add all links + lables to link table w/ ref to the new folder.
+
+    // reply with folder URL
+
+    // MIDDLEWARE
+      // create a folder 
+      // add links
+
+  console.log('/genlink');
+  return res.status(200).json({link: 'linkpack.io/' + res.locals.url});
+});
+
+
+// generate an aggregate link
+app.get('/:id', linksController.getList, (req, res)=>{
+  // send an id to look up in DB
+  // ID will match with a folder
+  // jointable getting all contents (links + folders) with that folder ID
+  // generate an object with lables+links
+  console.log('/genlink');
+  return res.status(200).json({link: res.locals.link});
+});
+
+// app.post('/signup', userController.createUser, sessionController.setSSIDCookie, sessionController.startSession, userController.checkServed, (req, res)=>{
+//   console.log('successfully created user: ', req.body.username, ' user served:', res.locals.served );
+//   return res.status(200).json({message: 'signup success', served: res.locals.served, userID: res.locals.userID});
+// })
+
+
+
 
 // catch-all route handler for any requests to an unknown route
 app.use((req, res) => res.status(404).send('404 error. Page not found'));
