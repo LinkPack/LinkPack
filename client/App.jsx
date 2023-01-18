@@ -1,14 +1,18 @@
 import React from 'react';
 import MainContainer from './containers/MainContainer.jsx';
+import { Route, Routes, useNavigate, Navigate } from "react-router-dom";
+import DisplayContainer from './containers/DisplayContainer.jsx';
 
 function App() {
-
+  // using useNavigate hook to navigate between routes
+  const navigate = useNavigate();
 
   return(
-    <div>
-      TEST
-      <MainContainer/>
-    </div>
+    <Routes>
+      <Route path="*" element={<div>Anything</div>} />
+      <Route exact path="/l" element={<DisplayContainer />} />
+      <Route exact path="/" element={<MainContainer navigate={navigate}/>} />
+    </Routes>
   ); 
 }
 

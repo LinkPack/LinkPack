@@ -53,7 +53,7 @@ app.get('/:id', linksController.getList, (req, res)=>{
   // jointable getting all contents (links + folders) with that folder ID
   // generate an object with lables+links
   console.log('/genlink');
-  return res.status(200).json({link: res.locals.link});
+  return res.status(200).json({link: res.locals.link}).send(path.resolve(__dirname, '../index.html'));
 });
 
 // app.post('/signup', userController.createUser, sessionController.setSSIDCookie, sessionController.startSession, userController.checkServed, (req, res)=>{

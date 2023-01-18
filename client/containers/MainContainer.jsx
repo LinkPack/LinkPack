@@ -11,6 +11,7 @@ function MainContainer(props) {
 
   return(
     <div>
+      <button onClick={(() => props.navigate('/l'))}>Navigate</button>
       MainContainer!
      <EntriesContainer onClick={handleClick} entries={props.linkPack.entries}/>
      <GeneratorContainer entries={props.linkPack.entries}/> 
