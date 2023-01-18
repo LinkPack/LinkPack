@@ -4,7 +4,7 @@ import {connect} from 'react-redux';
 
 function EntriesDisplay(props) {
 
-   const allEntries = [];
+  const allEntries = [];
   for(let i = 0; i < props.entries.length; i++) {
     allEntries.push(<Entry keyId={props.entries[i].keyId} label={props.entries[i].label} link={props.entries[i].link}/>)
   }

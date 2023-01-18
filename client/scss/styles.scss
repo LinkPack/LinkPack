@@ -23,6 +23,11 @@ p {
   font-size: 14px;
 }
 
+#linkAddBar {
+  display: flex;
+  justify-content: center;
+}
+
 .entry-box {
   display: flex;
   justify-content: space-between;
@@ -103,4 +108,24 @@ button:hover {
   opacity: 1;
   display: none;
   transition: opacity 0.3s linear;
+}
+
+.diplayLinkGroup {
+  width: 800px;
+  // border: 1px solid blue;
+  margin: auto;
+  font-size: 30px;
+  display: flex;
+  justify-content: space-between;
+}
+.displayLabel {
+  width: 200px;
+  text-align: right;
+  margin-right: 20px;
+}
+.displayLink {
+  width: 550px;
+  text-align: left;
+  font-weight: 600;
+  
 }

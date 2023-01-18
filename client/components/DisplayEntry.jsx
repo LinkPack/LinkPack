@@ -3,9 +3,9 @@ import React from 'react';
 function DisplayEntry({link, label}) {
 
   return(
-    <div>
-      <div>{label}</div>
-      <a href={'//' + link} target='_blank'>{link}</a>
+    <div className='diplayLinkGroup'>
+      <div className='displayLabel'>{label}</div>
+      <a className='displayLink' href={'//' + link} target='_blank'>{link}</a>
     </div>
   ); 
 }

@@ -39,7 +39,7 @@ function DisplayContainer2(props) {
 
   return(
     <div>
-        DisplayContainer2
+        <h1>Links</h1>
         <>
           {info}
         </>
