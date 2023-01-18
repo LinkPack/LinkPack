@@ -6,9 +6,10 @@ function EntriesDisplay(props) {
 
    const allEntries = [];
   for(let i = 0; i < props.entries.length; i++) {
-    allEntries.push(<Entry key={props.entries[i].key} label={props.entries[i].label} link={props.entries[i].link}/>)
+    allEntries.push(<Entry keyId={props.entries[i].keyId} label={props.entries[i].label} link={props.entries[i].link}/>)
   }
   console.log('im props.entries in display',props.entries)
+
 
   return(
     <div class='box'>

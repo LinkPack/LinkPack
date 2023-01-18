@@ -20,7 +20,9 @@ function GeneratorCreator(props) {
       body: JSON.stringify({ links: props.entries}) // hope this works
     })
     .then(response => response.json())
-    .then(key => console.log(key.link));
+    .then(key => {
+      resetText(`www.linkPack.com/${key.link}`);
+      console.log(key.link)});
   }
   
   return(

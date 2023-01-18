@@ -11,10 +11,10 @@ function EntryCreator(props) {
   const handleButtonClick = async () => {
 
 
-    const key = short.generate();
-    console.log('i gen key', key);
+    const keyId = short.generate();
+    console.log('i gen key', keyId);
 
-    props.onClick(label,link,key);
+    props.onClick(label,link,keyId);
 
     resetLabel();
     resetLink();

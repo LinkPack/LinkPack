@@ -5,8 +5,8 @@ import {connect} from 'react-redux';
 import { addEntryActionCreator } from '../actions/actions.js'
 
 function MainContainer(props) {
-  const handleClick = (label, link, key) => {
-    props.newEntry(label,link, key);
+  const handleClick = (label, link, keyId) => {
+    props.newEntry(label,link, keyId);
   }
 
   return(
@@ -24,7 +24,7 @@ const mapStateToProps = state => ({
 });
 const mapDispatchToProps = dispatch => (
   {
-    newEntry: (label, link, key) => dispatch(addEntryActionCreator(label, link, key))
+    newEntry: (label, link, keyId) => dispatch(addEntryActionCreator(label, link, keyId))
   
   }
 );
