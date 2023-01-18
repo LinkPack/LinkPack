@@ -23,7 +23,7 @@ function EntryCreator(props) {
   return(
     <div id='linkAddBar'>
       <TextField id="outlined-basic" label="Label" variant="outlined" value={label} onChange={labelOnChange} />
-      <TextField id="outlined-basic" label="Link" variant="outlined" value={link} onChange={linkOnChange} />
+      <TextField className='linkEntryField' id="outlined-basic" label="Link" variant="outlined" value={link} onChange={linkOnChange} />
       <button onClick={handleButtonClick}>Add Link </button>
     </div>
   ); 
