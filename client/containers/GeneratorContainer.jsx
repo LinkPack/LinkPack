@@ -4,7 +4,7 @@ import GeneratorCreator from '../components/GeneratorCreator.jsx';
 function GeneratorContainer(props) {
 
   return(
-    <div id='genBox'>
+    <div id='gen-box'>
         <p>Package your links!</p>
         <GeneratorCreator entries={props.entries} />
     </div>

@@ -7,7 +7,6 @@ function EntriesContainer(props) {
 
   return(
     <div>
-        EntriesContainer
         <EntryCreator onClick={props.onClick} entries={props.entries} />
         <EntriesDisplay entries={props.entries}/>
     </div>

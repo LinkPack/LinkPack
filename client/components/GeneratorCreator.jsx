@@ -27,8 +27,9 @@ function GeneratorCreator(props) {
   
   return(
     <div>
+        <div><button onClick={fetchLink}>Generate</button></div>
         <TextField id="outlined-basic" label="LinkPack" variant="outlined" onChange={textOnChange}  value={text}/>
-        <button onClick={fetchLink}>Generate</button>
+        
     </div>
   ); 
 }

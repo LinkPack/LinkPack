@@ -23,7 +23,9 @@ function EntryCreator(props) {
   
   return(
     <div>
-      <p>Enter your links here</p>
+      
+      <p>LinkPack will package all entered links and give you a short link to send to all your friends.</p>
+      <h3>Enter your links here</h3>
       <TextField id="outlined-basic" label="Label" variant="outlined" value={label} onChange={labelOnChange} />
       <TextField id="outlined-basic" label="Link" variant="outlined" value={link} onChange={linkOnChange} />
       <button onClick={handleButtonClick}>Add Link </button>

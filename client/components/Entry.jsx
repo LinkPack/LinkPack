@@ -10,7 +10,7 @@ console.log('im props in entry', props)
     
   }
   return(
-    <div>
+    <div class='entry-box'>
       <div>{props.label}</div>
       <div>{props.link}</div>
       <button onClick={deleteEntry}>-</button>
