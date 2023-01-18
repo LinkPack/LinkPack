@@ -1,7 +1,7 @@
 import React from 'react';
 import MainContainer from './containers/MainContainer.jsx';
 import { Route, Routes, useNavigate, Navigate } from "react-router-dom";
-import DisplayContainer from './containers/DisplayContainer.jsx';
+import DisplayContainer2 from './containers/DisplayContainer2.jsx';
 
 function App() {
   // using useNavigate hook to navigate between routes
@@ -9,8 +9,8 @@ function App() {
 
   return(
     <Routes>
-      <Route path="*" element={<DisplayContainer />} />
-      <Route exact path="/l" element={<DisplayContainer />} />
+      <Route path="*" element={<DisplayContainer2 />} />
+      <Route exact path="/l" element={<DisplayContainer2 />} />
       <Route exact path="/" element={<MainContainer navigate={navigate}/>} />
     </Routes>
   ); 

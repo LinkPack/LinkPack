@@ -15,7 +15,10 @@ const generatedLinkPackReducer = (state = initialState, action) => {
       const payloadObj = action.payload.receivedEntries;
       //console.log('new entries equal to entries? ', newEntries === state.entries);
       for (const key in payloadObj) {
-          const linkObj = {key: payloadObj[key]};
+          const linkObj = {
+            label: key,
+            link: payloadObj[key]
+          };
           entries.push(linkObj);
       }
       console.log('im entries',entries)
