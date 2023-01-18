@@ -34,10 +34,12 @@ p {
   background-color: #E5E5E5;
   border-radius: 10px;
   padding: 5px;
+  margin:  3px 0px;
 }
 
 .link {
   width: 800px;
+  margin-left: 20px;
 }
 
 .label {
@@ -56,11 +58,35 @@ p {
 }
 
 .display-box {
-
   background: #A5CBC6;
-  margin: 10px;
+  margin: 7px;
   padding: 10px;
   border-radius: 10px;
+}
 
-  
+.display-box button {
+  margin-top: 4px;
+  background-color: #E5E5E5;
+  margin-left: 20px;
+  padding: 0 20px;
+  height: 27px;
+}
+
+#generatedLink {
+  margin-top: 20px;
+}
+#generatedLink:hover {
+  font-weight: 200;
+  cursor: pointer;
+}
+
+button {
+  border: none;
+  border-radius: 4px;
+  padding: 15px;
+  margin: 0 20px;
+}
+
+button:hover {
+  background-color: #cfe9e6;
 }

@@ -21,15 +21,19 @@ function GeneratorCreator(props) {
     })
     .then(response => response.json())
     .then(key => {
-      resetText(`www.linkPack.com/${key.link}`);
+      resetText(`${window.location.origin}/${key.link}`);
       console.log(key.link)});
+  }
+
+  function copyToClipboard() {
+    // Copy the text inside the text field
+    navigator.clipboard.writeText(text);
   }
   
   return(
     <div class='output-container'>
         <div><button onClick={fetchLink}>Generate</button></div>
-        <TextField  fullWidth id="outlined-basic" label="LinkPack" variant="outlined" onChange={textOnChange}  value={text}/>
-        
+        <div onClick={copyToClipboard} id='generatedLink'>{text}</div>
     </div>
   ); 
 }
