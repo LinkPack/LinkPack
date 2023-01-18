@@ -2,7 +2,7 @@ import * as types from '../constants/actionTypes'
 
 const initialState = {
   linkPack: '',
-  entries: [{label:'f', link: 'sdf', id: 0}],
+  entries: [{label:'f', link: 'sdf', key: 0}],
 }
 
 const linkPackReducer = (state = initialState, action) => {
@@ -14,7 +14,7 @@ const linkPackReducer = (state = initialState, action) => {
       console.log('im in reducer');
       entries = [...state.entries];
       //console.log('new entries equal to entries? ', newEntries === state.entries);
-      entries.push({label: action.payload.label,link: action.payload.link, id: action.payload.id})
+      entries.push({label: action.payload.label,link: action.payload.link, key: action.payload.key})
       console.log('im entries',entries)
       return {
         ...state, entries
