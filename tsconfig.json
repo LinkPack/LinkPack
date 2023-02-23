@@ -2,7 +2,7 @@
     "compilerOptions": {
       "jsx": "react",
       //what node will use to require exports into other files
-      "module": "CommonJS",
+      "module": "ESNext",
       "target": "es6",
       "esModuleInterop": true,
       "strict": true,
