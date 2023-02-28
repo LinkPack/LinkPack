@@ -4,7 +4,7 @@ const initialState = {
   entries: [],
 }
 
-const generatedLinkPackReducer = (state = initialState, action) => {
+const generatedLinkPackReducer = (state = initialState, action: {type: string, payload: {receivedEntries: string[]}}) => {
   let entries;
   switch(action.type) {
     case types.GET_ENTRIES:

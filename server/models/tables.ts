@@ -1,4 +1,4 @@
-const db = require('./database.js');
+const db: {query: Function} = require('./database');
 
 const userTable = `
 	CREATE TABLE users (
@@ -110,4 +110,7 @@ const selectQuery= `
 	`;
 
 // RUN:
-// node ./server/models/tables.js    
+// node ./server/models/tables.js
+
+//avoid block-scoped typing error
+export {}

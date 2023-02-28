@@ -1,5 +1,5 @@
 import React from 'react';
-import Entry from '../components/Entry.jsx'
+import Entry from '../components/Entry'
 import {connect} from 'react-redux';
 
 function EntriesDisplay(props: {entries: {keyId: string, label: string, link: string}[]}) {

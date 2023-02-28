@@ -1,9 +1,9 @@
-import { useState } from 'react';
+import { useState, ChangeEvent } from 'react';
 
-export const useInput = init => {
+export const useInput = (init: string) => {
   // custom hook
   const [value, setValue] = useState(init);
-  const onChange = e => {
+  const onChange = (e: ChangeEvent<HTMLInputElement>) => {
     setValue(e.target.value ? e.target.value : '');
   };
   const reset = (newInit = '') => {

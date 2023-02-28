@@ -4,7 +4,7 @@ import TextField from '@mui/material/TextField';
 import { useInput } from '../hooks.js';
 import short from 'short-uuid';
 
-function EntryCreator(props) {
+function EntryCreator(props: {onClick: Function}) {
   const [label, labelOnChange, resetLabel] = useInput('');
   const [link, linkOnChange, resetLink] = useInput('');
 

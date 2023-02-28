@@ -1,13 +1,22 @@
 import * as types from '../constants/actionTypes'
 
+interface Entry {
+  label: string,
+  link: string,
+  keyId: string
+};
+
+type Payload = Entry | string;
+
 const initialState = {
   linkPack: '',
   entries: [],
 }
 
-const linkPackReducer = (state = initialState, action) => {
-  let entries;
+const linkPackReducer = (state = initialState, action: {type: string, payload: any}) => {
+  let entries: Entry[];
   switch(action.type) {
+    
     case types.ADD_ENTRY:
       // add link to list
       // add label to label list
@@ -20,7 +29,7 @@ const linkPackReducer = (state = initialState, action) => {
         ...state, entries
       }
     case types.DELETE_ENTRY:
-      entries = [...state.entries].filter(entry => entry.keyId !== action.payload)
+      entries = [...state.entries].filter((entry: Entry) => entry.keyId !== action.payload)
       return {
         ...state, entries
       }

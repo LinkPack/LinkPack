@@ -1,6 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import { deleteEntryActionCreator } from '../actions/actions.js'
+import { deleteEntryActionCreator } from '../actions/actions'
+import { AppDispatch } from '../store';
 
 function Entry(props: { keyId: string, label: string, link: string, deleteEntry: Function }) {
 console.log('im props in entry', props)

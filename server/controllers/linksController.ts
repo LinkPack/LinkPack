@@ -1,10 +1,13 @@
 const db = require('../models/database');
 const UIDGenerator = require('uid-generator');
 
+interface LinksController {
+  makeFolder?: Function,
+  addLinks?: Function,
+  getList?: Function,
+}
 
-const linksController = {}
-
-
+const linksController: LinksController = {}
 
 linksController.makeFolder = async (req, res, next) => {
   // we manually set this to 32, but in order to scale we may want to increase this, or have it scale based on number of links in DB.
@@ -86,14 +89,20 @@ linksController.makeFolder = async (req, res, next) => {
 }
 
 linksController.addLinks = async (req, res, next) => {
-  const links = req.body.links;
+  interface LinkObj {
+    link: string,
+    label: string,
+    keyId: string
+  }
+
+  const links: LinkObj[] = req.body.links;
   console.log('links',links);
 
   try {
 
     let query = `INSERT INTO links (link, label, folder, key)
       VALUES`;
-    let params = [];
+    let params: string[] = [];
 
     for (let i = 0; i < links.length; i++) {
       let num = i * 4;
@@ -188,3 +197,4 @@ linksController.getList = async (req, res, next) => {
 
 
 module.exports = linksController;
+export {}
