@@ -1,7 +1,7 @@
 import React from 'react';
-import GeneratorCreator from '../components/GeneratorCreator.jsx';
+import GeneratorCreator from '../components/GeneratorCreator';
 
-function GeneratorContainer(props) {
+function GeneratorContainer(props: {entries: []}) {
 
   return(
     <div id='gen-box'>
