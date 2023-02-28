@@ -23,31 +23,31 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.deleteEntryActionCreator = exports.getEntriesActionCreator = exports.generateLinkPackActionCreator = exports.addEntryActionCreator = void 0;
-const types = __importStar(require("../constants/actionTypes.js"));
-const addEntryActionCreator = (label, link, keyId) => ({
-    type: types.ADD_ENTRY,
-    payload: {
-        label,
-        link,
-        keyId
+const types = __importStar(require("../constants/actionTypes"));
+;
+const initialState = {
+    linkPack: '',
+    entries: [],
+};
+const linkPackReducer = (state = initialState, action) => {
+    let entries;
+    switch (action.type) {
+        case types.ADD_ENTRY:
+            // add link to list
+            // add label to label list
+            console.log('im in reducer');
+            entries = [...state.entries];
+            //console.log('new entries equal to entries? ', newEntries === state.entries);
+            entries.push({ label: action.payload.label, link: action.payload.link, keyId: action.payload.keyId });
+            console.log('im entries', entries);
+            return Object.assign(Object.assign({}, state), { entries });
+        case types.DELETE_ENTRY:
+            entries = [...state.entries].filter((entry) => entry.keyId !== action.payload);
+            return Object.assign(Object.assign({}, state), { entries });
+        default: {
+            return state;
+        }
     }
-});
-exports.addEntryActionCreator = addEntryActionCreator;
-const generateLinkPackActionCreator = () => ({
-    type: types.GENERATE_LINKPACK
-});
-exports.generateLinkPackActionCreator = generateLinkPackActionCreator;
-const getEntriesActionCreator = (receivedEntries) => ({
-    type: types.GET_ENTRIES,
-    payload: {
-        receivedEntries
-    }
-});
-exports.getEntriesActionCreator = getEntriesActionCreator;
-const deleteEntryActionCreator = (keyId) => ({
-    type: types.DELETE_ENTRY,
-    payload: keyId
-});
-exports.deleteEntryActionCreator = deleteEntryActionCreator;
-//# sourceMappingURL=actions.js.map
+};
+exports.default = linkPackReducer;
+//# sourceMappingURL=linkPackReducer.js.map

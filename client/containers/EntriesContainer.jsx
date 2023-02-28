@@ -1,6 +1,6 @@
 import React from 'react';
-import EntryCreator from '../components/EntryCreator.jsx'
-import EntriesDisplay from '../components/EntriesDisplay.jsx';
+import EntryCreator from '../components/EntryCreator'
+import EntriesDisplay from '../components/EntriesDisplay';
 
 
 function EntriesContainer(props) {

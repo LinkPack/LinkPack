@@ -2,7 +2,7 @@
     "compilerOptions": {
       "jsx": "react",
       //what node will use to require exports into other files
-      "module": "ESNext",
+      "module": "CommonJS",
       "target": "es6",
       "esModuleInterop": true,
       "strict": true,
@@ -10,7 +10,7 @@
       "sourceMap": true,
       //disallows TS to infer implicit anys
       "noImplicitAny": true,
-      // "moduleResolution": "node",
+      "moduleResolution": "node",
       // "allowSyntheticDefaultImports": true,
     },
     //specifies an array of filenames or patters to include in the program

@@ -23,31 +23,33 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.deleteEntryActionCreator = exports.getEntriesActionCreator = exports.generateLinkPackActionCreator = exports.addEntryActionCreator = void 0;
-const types = __importStar(require("../constants/actionTypes.js"));
-const addEntryActionCreator = (label, link, keyId) => ({
-    type: types.ADD_ENTRY,
-    payload: {
-        label,
-        link,
-        keyId
+const types = __importStar(require("../constants/actionTypes"));
+const initialState = {
+    entries: [],
+};
+const generatedLinkPackReducer = (state = initialState, action) => {
+    let entries;
+    switch (action.type) {
+        case types.GET_ENTRIES:
+            // add link to list
+            // add label to label list
+            console.log('im in reducer');
+            entries = [];
+            const payloadObj = action.payload.receivedEntries;
+            //console.log('new entries equal to entries? ', newEntries === state.entries);
+            for (const key in payloadObj) {
+                const linkObj = {
+                    label: key,
+                    link: payloadObj[key]
+                };
+                entries.push(linkObj);
+            }
+            console.log('im entries', entries);
+            return Object.assign(Object.assign({}, state), { entries });
+        default: {
+            return state;
+        }
     }
-});
-exports.addEntryActionCreator = addEntryActionCreator;
-const generateLinkPackActionCreator = () => ({
-    type: types.GENERATE_LINKPACK
-});
-exports.generateLinkPackActionCreator = generateLinkPackActionCreator;
-const getEntriesActionCreator = (receivedEntries) => ({
-    type: types.GET_ENTRIES,
-    payload: {
-        receivedEntries
-    }
-});
-exports.getEntriesActionCreator = getEntriesActionCreator;
-const deleteEntryActionCreator = (keyId) => ({
-    type: types.DELETE_ENTRY,
-    payload: keyId
-});
-exports.deleteEntryActionCreator = deleteEntryActionCreator;
-//# sourceMappingURL=actions.js.map
+};
+exports.default = generatedLinkPackReducer;
+//# sourceMappingURL=generatedLinkPackReducer.js.map
