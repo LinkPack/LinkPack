@@ -1,6 +1,6 @@
 import { useState, ChangeEvent } from 'react';
 
-export const useInput = (init: string) => {
+export const useInput = (init: string): [string, (e: ChangeEvent<HTMLInputElement>) => void, () => void] => {
   // custom hook
   const [value, setValue] = useState(init);
   const onChange = (e: ChangeEvent<HTMLInputElement>) => {

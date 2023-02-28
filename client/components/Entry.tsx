@@ -18,10 +18,9 @@ console.log('im props in entry', props)
     </div>
   ); 
 }
-const mapDispatchToProps = dispatch => (
+const mapDispatchToProps = (dispatch: AppDispatch) => (
   {
-    deleteEntry: keyId => dispatch(deleteEntryActionCreator(keyId))
-  
+    deleteEntry: (keyId: string) => dispatch(deleteEntryActionCreator(keyId))
   }
 );
 
