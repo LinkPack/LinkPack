@@ -14,7 +14,7 @@
       // "allowSyntheticDefaultImports": true,
     },
     //specifies an array of filenames or patters to include in the program
-    "include": ["./client/**/*"],
+    "include": ["./client/**/*", "./server/**/*"],
     "exclude": [
         "node_modules"
       ],

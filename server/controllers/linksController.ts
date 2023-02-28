@@ -1,5 +1,6 @@
 const db = require('../models/database');
 const UIDGenerator = require('uid-generator');
+import { Request, Response, NextFunction } from 'express';
 
 interface LinksController {
   makeFolder?: Function,
@@ -9,7 +10,7 @@ interface LinksController {
 
 const linksController: LinksController = {}
 
-linksController.makeFolder = async (req, res, next) => {
+linksController.makeFolder = async (req: Request, res: Response, next: NextFunction) => {
   // we manually set this to 32, but in order to scale we may want to increase this, or have it scale based on number of links in DB.
   const uidgen = new UIDGenerator(32);
   console.log('im req.body', req.body);
@@ -88,7 +89,7 @@ linksController.makeFolder = async (req, res, next) => {
   // save url + table ID in res.locals + userID if provided
 }
 
-linksController.addLinks = async (req, res, next) => {
+linksController.addLinks = async (req: Request, res: Response, next: NextFunction) => {
   interface LinkObj {
     link: string,
     label: string,
@@ -142,7 +143,7 @@ linksController.addLinks = async (req, res, next) => {
 }
 
 
-linksController.getList = async (req, res, next) => {
+linksController.getList = async (req: Request, res: Response, next: NextFunction) => {
   try {
     // console.log('req.params.id', req.params.id);
     // step 1: using the tiny url, find the associated folder number
@@ -161,8 +162,12 @@ linksController.getList = async (req, res, next) => {
       WHERE folder = ${folderNumber}
     `
     const linksData = await db.query(fetchLinksQuery);
-    const linksAndLabels = {};
-    const fetchedLinksObj = linksData.rows.forEach((obj) => {
+
+    interface LinksAndLabels {
+      [index: string]: string
+    }
+    const linksAndLabels: LinksAndLabels = {};
+    const fetchedLinksObj = linksData.rows.forEach((obj: {link: string, label: string}) => {
       linksAndLabels[obj['label']] = obj['link'];
     });
 

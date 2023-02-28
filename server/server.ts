@@ -1,6 +1,7 @@
 const path = require('path');
 const express = require('express');
 const linksController = require('./controllers/linksController');
+import { Request, Response, NextFunction } from 'express';
 
 const app = express();
 
@@ -20,7 +21,7 @@ app.use(express.static(path.resolve(__dirname, '../client')));
 // app.use('/api', apiRouter);
 
 // generate an aggregate link
-app.post('/genlink', linksController.makeFolder, linksController.addLinks, (req, res)=>{
+app.post('/genlink', linksController.makeFolder, linksController.addLinks, (req: Request, res: Response)=>{
 
   // recieve:
     // object with two keys
@@ -47,7 +48,7 @@ app.post('/genlink', linksController.makeFolder, linksController.addLinks, (req,
 
 
 // generate an aggregate link
-app.get('/getList/:id', linksController.getList, (req, res) => {
+app.get('/getList/:id', linksController.getList, (req: Request, res: Response) => {
   console.log(res.locals.fetchedLinks);
   return res.status(200).json(res.locals.fetchedLinks);
 });
@@ -57,16 +58,16 @@ app.get('/getList/:id', linksController.getList, (req, res) => {
 //   return res.status(200).json({message: 'signup success', served: res.locals.served, userID: res.locals.userID});
 // })
 
-app.get('/*', (req, res) => {
+app.get('/*', (req: Request, res: Response) => {
   console.log('in catch all')
   return res.sendFile(path.resolve(__dirname, '../dist/index.html'));
 })
 
 // catch-all route handler for any requests to an unknown route
-app.use((req, res) => res.status(404).send('404 error. Page not found'));
+app.use((req: Request, res: Response) => res.status(404).send('404 error. Page not found'));
 
 
-app.use((err, req, res, next) => {
+app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
   const defaultErr = {
     log: 'Express error handler caught unknown middleware error',
     status: 500,

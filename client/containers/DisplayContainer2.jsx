@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getEntriesActionCreator } from '../actions/actions.js'
-import DisplayEntry from '../components/DisplayEntry.jsx';
+import DisplayEntry from '../components/DisplayEntry.js';
 
 function DisplayContainer2(props) {
   

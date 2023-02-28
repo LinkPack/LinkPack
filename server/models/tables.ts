@@ -49,14 +49,14 @@ const createMockDataFolder = `
  	VALUES ('coolstuff', 'xy29o');
 	`;
 
- const setupTables = (tables) => {
+ const setupTables = (tables: []) => {
     tables.forEach(table => {
       db.query(table)
-      .then(data => {
+      .then((data: string) => {
         console.log(`table: ${JSON.stringify(table)} setup complete`);
         console.log(data)
       })
-      .catch(err => {
+      .catch((err: Error) => {
         console.log('errr setting up table');
         console.log(err)
       });
@@ -67,14 +67,14 @@ const createMockDataFolder = `
 // setupTables([userTable, linkTable, folderTable]);
 // setupTables([linkTable, folderTable]);
 
-const creatMockData = (mockData) => {
+const creatMockData = (mockData: []) => {
   mockData.forEach(d => {
     db.query(d)
-    .then(data => {
+    .then((data: string) => {
       console.log(`table: ${JSON.stringify(d)} mock-data complete`);
       console.log(data)
     })
-    .catch(err => {
+    .catch((err: Error) => {
       console.log('errr adding mock data to table');
       console.log(err)
     });
@@ -87,14 +87,14 @@ const creatMockData = (mockData) => {
 // creatMockData([createMockDataLinks, createMockDataFolder]);
 
 
-const eraseTables = (tablename) => {
+const eraseTables = (tablename: string) => {
   const dropQuery = `DROP TABLE ${tablename}`;
   db.query(dropQuery)
-    .then(data => {
+    .then((data: string) => {
       console.log(`sucessfully deleted: ${tablename}`);
       console.log(data)
     })
-    .catch(err => {
+    .catch((err: Error) => {
       console.log('errr deleting table' + tablename);
       console.log(err)
     });

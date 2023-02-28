@@ -46,11 +46,11 @@ const createMockDataFolder = `
 const setupTables = (tables) => {
     tables.forEach(table => {
         db.query(table)
-            .then(data => {
+            .then((data) => {
             console.log(`table: ${JSON.stringify(table)} setup complete`);
             console.log(data);
         })
-            .catch(err => {
+            .catch((err) => {
             console.log('errr setting up table');
             console.log(err);
         });
@@ -62,11 +62,11 @@ const setupTables = (tables) => {
 const creatMockData = (mockData) => {
     mockData.forEach(d => {
         db.query(d)
-            .then(data => {
+            .then((data) => {
             console.log(`table: ${JSON.stringify(d)} mock-data complete`);
             console.log(data);
         })
-            .catch(err => {
+            .catch((err) => {
             console.log('errr adding mock data to table');
             console.log(err);
         });
@@ -78,11 +78,11 @@ const creatMockData = (mockData) => {
 const eraseTables = (tablename) => {
     const dropQuery = `DROP TABLE ${tablename}`;
     db.query(dropQuery)
-        .then(data => {
+        .then((data) => {
         console.log(`sucessfully deleted: ${tablename}`);
         console.log(data);
     })
-        .catch(err => {
+        .catch((err) => {
         console.log('errr deleting table' + tablename);
         console.log(err);
     });
