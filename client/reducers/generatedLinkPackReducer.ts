@@ -1,6 +1,9 @@
 import * as types from '../constants/actionTypes'
+interface GeneratedLinkPackState {
+  entries: {label: string, link: string}[],
+}
 
-const initialState = {
+const initialState: GeneratedLinkPackState = {
   entries: [],
 }
 
