@@ -1,0 +1,21 @@
+{
+    "compilerOptions": {
+      "jsx": "react",
+      //what node will use to require exports into other files
+      "module": "CommonJS",
+      "target": "es6",
+      "esModuleInterop": true,
+      "strict": true,
+      "skipLibCheck": true,
+      "sourceMap": true,
+      //disallows TS to infer implicit anys
+      "noImplicitAny": true,
+      "moduleResolution": "node",
+      // "allowSyntheticDefaultImports": true,
+    },
+    //specifies an array of filenames or patters to include in the program
+    "include": ["./client/**/*", "./server/**/*"],
+    "exclude": [
+        "node_modules"
+      ],
+  }

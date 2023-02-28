@@ -1,10 +1,10 @@
 import React from 'react';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
-import { useInput } from '../hooks.js';
+import { useInput } from '../hooks';
 import short from 'short-uuid';
 
-function EntryCreator(props) {
+function EntryCreator(props: {onClick: Function}) {
   const [label, labelOnChange, resetLabel] = useInput('');
   const [link, linkOnChange, resetLink] = useInput('');
 

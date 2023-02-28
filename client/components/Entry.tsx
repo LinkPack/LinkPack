@@ -1,8 +1,9 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import { deleteEntryActionCreator } from '../actions/actions.js'
+import { deleteEntryActionCreator } from '../actions/actions'
+import { AppDispatch } from '../store';
 
-function Entry(props) {
+function Entry(props: { keyId: string, label: string, link: string, deleteEntry: Function }) {
 console.log('im props in entry', props)
   const deleteEntry = () => {
     console.log('im in delete', props.keyId)
@@ -17,10 +18,9 @@ console.log('im props in entry', props)
     </div>
   ); 
 }
-const mapDispatchToProps = dispatch => (
+const mapDispatchToProps = (dispatch: AppDispatch) => (
   {
-    deleteEntry: keyId => dispatch(deleteEntryActionCreator(keyId))
-  
+    deleteEntry: (keyId: string) => dispatch(deleteEntryActionCreator(keyId))
   }
 );
 

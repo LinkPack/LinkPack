@@ -1,8 +1,8 @@
 import React from 'react';
-import Entry from '../components/Entry.jsx'
+import Entry from '../components/Entry'
 import {connect} from 'react-redux';
 
-function EntriesDisplay(props) {
+function EntriesDisplay(props: {entries: {keyId: string, label: string, link: string}[]}) {
 
   const allEntries = [];
   for(let i = 0; i < props.entries.length; i++) {

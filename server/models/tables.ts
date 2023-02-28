@@ -1,6 +1,5 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-const db = require('./database');
+const db: {query: Function} = require('./database');
+
 const userTable = `
 	CREATE TABLE users (
 		username varchar(255) NOT NULL UNIQUE,
@@ -9,10 +8,12 @@ const userTable = `
 		PRIMARY KEY (username)
 		);
 	`;
+
 const createMockDataUser = `
 	INSERT INTO users (username, password, email)
  	VALUES ('admin', 'password', 'admin@gmail.com');
 	`;
+
 const linkTable = `
 	CREATE TABLE links (
 		id int NOT NULL GENERATED ALWAYS AS IDENTITY,
@@ -24,10 +25,13 @@ const linkTable = `
 		PRIMARY KEY (id)
 		);
 	`;
+
 const createMockDataLinks = `
 	INSERT INTO links (link, label, folder)
  	VALUES ('www.google.com', 'google', 1);
 	`;
+
+
 const folderTable = `
   CREATE TABLE folders (
     id int NOT NULL GENERATED ALWAYS AS IDENTITY,
@@ -38,60 +42,75 @@ const folderTable = `
     timestamp TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     PRIMARY KEY (id)
     );
-  `;
+  `
+
 const createMockDataFolder = `
 	INSERT INTO folders (label, url)
  	VALUES ('coolstuff', 'xy29o');
 	`;
-const setupTables = (tables) => {
+
+ const setupTables = (tables: []) => {
     tables.forEach(table => {
-        db.query(table)
-            .then((data) => {
-            console.log(`table: ${JSON.stringify(table)} setup complete`);
-            console.log(data);
-        })
-            .catch((err) => {
-            console.log('errr setting up table');
-            console.log(err);
-        });
+      db.query(table)
+      .then((data: string) => {
+        console.log(`table: ${JSON.stringify(table)} setup complete`);
+        console.log(data)
+      })
+      .catch((err: Error) => {
+        console.log('errr setting up table');
+        console.log(err)
+      });
     });
-};
+  }
+
 /* USE THIS TO CREATE INITIAL TABLES */
 // setupTables([userTable, linkTable, folderTable]);
 // setupTables([linkTable, folderTable]);
-const creatMockData = (mockData) => {
-    mockData.forEach(d => {
-        db.query(d)
-            .then((data) => {
-            console.log(`table: ${JSON.stringify(d)} mock-data complete`);
-            console.log(data);
-        })
-            .catch((err) => {
-            console.log('errr adding mock data to table');
-            console.log(err);
-        });
+
+const creatMockData = (mockData: []) => {
+  mockData.forEach(d => {
+    db.query(d)
+    .then((data: string) => {
+      console.log(`table: ${JSON.stringify(d)} mock-data complete`);
+      console.log(data)
+    })
+    .catch((err: Error) => {
+      console.log('errr adding mock data to table');
+      console.log(err)
     });
-};
+  });
+}
+
+
 /* USE THIS TO CREATE MOCK DATA */
 // creatMockData([createMockDataUser, createMockDataLinks, createMockDataFolder]);
 // creatMockData([createMockDataLinks, createMockDataFolder]);
-const eraseTables = (tablename) => {
-    const dropQuery = `DROP TABLE ${tablename}`;
-    db.query(dropQuery)
-        .then((data) => {
-        console.log(`sucessfully deleted: ${tablename}`);
-        console.log(data);
+
+
+const eraseTables = (tablename: string) => {
+  const dropQuery = `DROP TABLE ${tablename}`;
+  db.query(dropQuery)
+    .then((data: string) => {
+      console.log(`sucessfully deleted: ${tablename}`);
+      console.log(data)
     })
-        .catch((err) => {
-        console.log('errr deleting table' + tablename);
-        console.log(err);
+    .catch((err: Error) => {
+      console.log('errr deleting table' + tablename);
+      console.log(err)
     });
-};
+}
+
 /* USE THESE TO ERASE TABLES */
 // eraseTables('folders');
 // eraseTables('links');
 // eraseTables('users');
-const selectQuery = `
+
+const selectQuery= `
 	SELECT * FROM users;
 	`;
-//# sourceMappingURL=tables.js.map
+
+// RUN:
+// node ./server/models/tables.js
+
+//avoid block-scoped typing error
+export {}

@@ -1,9 +1,10 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getEntriesActionCreator } from '../actions/actions.js'
-import DisplayEntry from '../components/DisplayEntry.jsx';
+import DisplayEntry from '../components/DisplayEntry.js';
+import { RootState } from '../store.js';
 
-function DisplayContainer2(props) {
+function DisplayContainer2() {
   
     //fetch to receive all links
     // const entries = useSelector(state => state.linkPack.entries);
@@ -31,7 +32,7 @@ function DisplayContainer2(props) {
   
 
   const info = [];
-  const entries = useSelector(state => state.generatedLinkPack.entries)
+  const entries = useSelector((state: RootState) => state.generatedLinkPack.entries)
   console.log(entries)
   for (let i = 0; i < entries.length; i++) {
     info.push(<DisplayEntry label={entries[i].label} link={entries[i].link}/>)
